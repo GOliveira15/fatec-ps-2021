@@ -7,6 +7,12 @@ window.onload = () => {
         var imc;
         var classificacao;
 
+        if (nome == '')
+        {
+            document.getElementById('resultado').innerHTML = "Informe seu nome!";
+            return;
+        }
+
         if (isNaN(peso) || isNaN(altura))
         {
             document.getElementById('resultado').innerHTML = "Um dos valores informados não é um número válido!";
@@ -54,19 +60,19 @@ window.onload = () => {
             classificacao = 'Erro';
         }
 
-        document.getElementById('resultado').innerHTML = `Olá, ${nome}. <br>Seu IMC é de ${imc}. <br>Sua classificação é: ${classificacao}.`;
+        document.getElementById('resultado').innerHTML = `Olá, ${nome}. <br><br><b>Seu IMC é:</b> <br>${imc}. <br><b>Sua classificação é:</b> <br>${classificacao}.`;
 
     }
 
     document.getElementById('nome').onclick = () => {
-        document.getElementById('images').innerHTML = 'Imagem 1 aqui!';
+        document.getElementById('images').innerHTML = '<img src="https://images.vexels.com/media/users/3/211808/isolated/preview/1287353b2b321859d20c5922adb7fbd7-balanca-de-cozinha-de-cozinha-plana.png" alt="Imagem 2">';
     }
 
     document.getElementById('peso').onclick = () => {
-        document.getElementById('images').innerHTML = 'Imagem 2 aqui!';
+        document.getElementById('images').innerHTML = '<img src="https://images.vexels.com/media/users/3/211808/isolated/preview/1287353b2b321859d20c5922adb7fbd7-balanca-de-cozinha-de-cozinha-plana.png" alt="Imagem 3">';
     }
 
     document.getElementById('altura').onclick = () => {
-        document.getElementById('images').innerHTML = 'Imagem 3 aqui!';
+        document.getElementById('images').innerHTML = '<img src="https://images.vexels.com/media/users/3/211808/isolated/preview/1287353b2b321859d20c5922adb7fbd7-balanca-de-cozinha-de-cozinha-plana.png" alt="Imagem 4">';
     }
 }

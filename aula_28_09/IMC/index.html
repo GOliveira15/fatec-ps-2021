@@ -9,13 +9,14 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <h1>Calcule seu IMC</h1>
 
-    <div>
+    <div id="main">
         <div id="form">
+            <h1>Calcule seu IMC</h1>
+
             <div class="formgroup">
                 <label for="nome">Conte-nos seu some</label>
-                <input type="text" name="nome" id="nome" onchange="funcaoChange(this)">
+                <input type="text" name="nome" id="nome">
             </div>
 
             <div class="formgroup">
@@ -35,7 +36,9 @@
             <div id="resultado"></div>
         </div>
 
-        <div id="images"></div>
+        <div id="images">
+            <img src="https://images.vexels.com/media/users/3/211808/isolated/preview/1287353b2b321859d20c5922adb7fbd7-balanca-de-cozinha-de-cozinha-plana.png" alt="Imagem 1">
+        </div>
     </div>
 
 </body>
