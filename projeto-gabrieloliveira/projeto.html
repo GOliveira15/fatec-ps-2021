@@ -5,6 +5,7 @@
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="projeto.css" />
+		<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 		<script type="text/javascript" src="projeto.js"></script>
 	</head>
 	<body>
@@ -42,7 +43,21 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						Smartphones Disponíveis
+						Smartphones Disponíveis:
+						<table class="table table-striped">
+							<thead class="table-dark">
+								<tr>
+									<th>Código</th>
+									<th>Modelo</th>
+									<th>Marca</th>
+									<th>Disponibilidade</th>
+									<th>Preço</th>
+									<th>Alterar</th>
+								</tr>
+							</thead>
+							<tbody id="tbTabela">
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>

@@ -9,6 +9,46 @@ class Smartphone {
     }
 }
 
-var produto1 = new Smartphone('1', 'iPhone X', 'Apple', 'Sim', '3000') ;
+var listaSmartphones = [];
 
-console.log(produto1);
+function cadastrar(objeto, lista) {
+	lista.push(objeto);
+}
+
+function listar(lista) {
+	let auxHtml = '';
+	for (let i = 0; i < lista.length; i++) {
+		auxHtml += '<tr>'+
+		           '<td>'+ lista[i].codigo +'</td>'+
+		           '<td>'+ lista[i].modelo +'</td>'+
+		           '<td>'+ lista[i].marca +'</td>'+
+		           '<td>'+ lista[i].disponibilidade +'</td>'+
+                   '<td>'+ lista[i].preco +'</td>'+
+		           '<td>'+
+		           '<button class="btn btn-warning">A</button>'+
+		           '</td>'+
+		           '</tr>';
+	}
+	return auxHtml;
+}
+
+$(document).ready(() => {
+	$('#btnSalvar').click(() => {
+		let codigo = $('#codigo').val();
+		let modelo = $('#modelo').val();
+		let marca = $('#marca').val();
+		let disponibilidade = $('#disponibilidade').val();
+        let preco = $('#preco').val();
+
+		if (codigo != '' && modelo != '' && marca != '' && disponibilidade != '' && preco != '') {
+
+			let smartphone = new Smartphone(codigo, modelo, marca, disponibilidade, preco);
+			cadastrar(smartphone, listaSmartphones);
+			$('#tbTabela').html(listar(listaSmartphones));
+			$('input').val('');
+            
+		} else {
+			alert('Todos os dados são necessários!');
+		}
+	});
+});
