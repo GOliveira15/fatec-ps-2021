@@ -25,7 +25,7 @@ function listar(lista) {
 		           '<td>'+ lista[i].disponibilidade +'</td>'+
                    '<td>'+ lista[i].preco +'</td>'+
 		           '<td>'+
-		           '<button class="btn btn-warning">A</button>'+
+		           '<button class="btn btn-warning" rel="'+ i +'">A</button>'+
 		           '</td>'+
 		           '</tr>';
 	}
@@ -51,4 +51,19 @@ $(document).ready(() => {
 			alert('Todos os dados são necessários!');
 		}
 	});
+
+	$('#tbTabela').on('click', '.btn-warning', function(){
+		let posicaoAtual = $(this).attr('rel');
+		alert(posicaoAtual);
+	});
+
+	$('#btnAjax').click(() => {
+		$.ajax({
+			url: "http://date.jsontest.com/",
+			method: 'GET'
+			}).done(function(resposta) {
+			$('#retornoAjax').html(resposta.date + ' ' + resposta.time);
+		});
+	});
+
 });
