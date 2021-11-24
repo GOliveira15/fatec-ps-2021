@@ -10,9 +10,14 @@ class Smartphone {
 }
 
 var listaSmartphones = [];
+var auxPosicao = '';
 
 function cadastrar(objeto, lista) {
 	lista.push(objeto);
+}
+
+function alterar(objeto, lista, posicao) {
+	lista[posicao] = objeto;
 }
 
 function listar(lista) {
@@ -43,7 +48,15 @@ $(document).ready(() => {
 		if (codigo != '' && modelo != '' && marca != '' && disponibilidade != '' && preco != '') {
 
 			let smartphone = new Smartphone(codigo, modelo, marca, disponibilidade, preco);
-			cadastrar(smartphone, listaSmartphones);
+			
+			if (auxPosicao == '')
+			{
+				cadastrar(smartphone, listaSmartphones);
+			} else {
+				alterar(smartphone, listaSmartphones, auxPosicao);
+				auxPosicao = '';
+			}
+
 			$('#tbTabela').html(listar(listaSmartphones));
 			$('input').val('');
             
@@ -53,8 +66,13 @@ $(document).ready(() => {
 	});
 
 	$('#tbTabela').on('click', '.btn-warning', function(){
-		let posicaoAtual = $(this).attr('rel');
-		alert(posicaoAtual);
+		//let posicaoAtual = $(this).attr('rel');
+		auxPosicao = $(this).attr('rel');
+		$('#codigo').val(listaSmartphones[auxPosicao].codigo);
+		$('#modelo').val(listaSmartphones[auxPosicao].modelo);
+		$('#marca').val(listaSmartphones[auxPosicao].marca);
+		$('#disponibilidade').val(listaSmartphones[auxPosicao].disponibilidade);
+		$('#preco').val(listaSmartphones[auxPosicao].preco);
 	});
 
 	$('#btnAjax').click(() => {
