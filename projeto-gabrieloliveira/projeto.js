@@ -20,6 +20,10 @@ function alterar(objeto, lista, posicao) {
 	lista[posicao] = objeto;
 }
 
+function excluir(lista, posicao){
+	lista.splice(posicao, 1);
+}
+
 function listar(lista) {
 	let auxHtml = '';
 	for (let i = 0; i < lista.length; i++) {
@@ -32,6 +36,9 @@ function listar(lista) {
 		           '<td>'+
 		           '<button class="btn btn-warning" rel="'+ i +'">A</button>'+
 		           '</td>'+
+				   '<td>'+
+				   '<button class="btn btn-danger" rel="'+ i +'">X</button>'+
+				   '</td>'+
 		           '</tr>';
 	}
 	return auxHtml;
@@ -75,6 +82,14 @@ $(document).ready(() => {
 		$('#preco').val(listaSmartphones[auxPosicao].preco);
 	});
 
+	$('#tbTabela').on('click', '.btn-danger', function(){
+		let posicaoExcluir = $(this).attr('rel');
+		if (confirm('Tem certeza que deseja excluir?')){
+			excluir(listaSmartphones, posicaoExcluir);
+			$('#tbTabela').html(listar(listaSmartphones));
+		}
+	});
+
 	$('#btnAjax').click(() => {
 		$.ajax({
 			url: "http://date.jsontest.com/",
@@ -82,6 +97,11 @@ $(document).ready(() => {
 			}).done(function(resposta) {
 			$('#retornoAjax').html(resposta.date + ' ' + resposta.time);
 		});
+	});
+
+	$('#btnJson').click(() => {
+		let jsonSmartphones = JSON.stringify(listaSmartphones);
+		console.log(jsonSmartphones);
 	});
 
 });
